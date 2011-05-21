@@ -1,0 +1,105 @@
+<stylecopresultscache>
+  <version>10</version>
+  <sourcecode name="ITokenizer.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>05/17/2011 20:20:06</timestamp>
+      <milliseconds>639</milliseconds>
+    </settings>
+    <timestamp>05/21/2011 12:58:48</timestamp>
+    <milliseconds>167</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StringTokenizer.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>05/17/2011 20:20:06</timestamp>
+      <milliseconds>639</milliseconds>
+    </settings>
+    <timestamp>05/21/2011 12:59:15</timestamp>
+    <milliseconds>911</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NumericToken.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>05/17/2011 20:20:06</timestamp>
+      <milliseconds>639</milliseconds>
+    </settings>
+    <timestamp>05/21/2011 12:59:24</timestamp>
+    <milliseconds>266</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="NumericWithUnitToken.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>05/17/2011 20:20:06</timestamp>
+      <milliseconds>639</milliseconds>
+    </settings>
+    <timestamp>05/21/2011 12:59:29</timestamp>
+    <milliseconds>555</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="StringValueToken.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>05/17/2011 20:20:06</timestamp>
+      <milliseconds>639</milliseconds>
+    </settings>
+    <timestamp>05/21/2011 12:59:34</timestamp>
+    <milliseconds>860</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="ITokenizerBase.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>05/17/2011 20:20:06</timestamp>
+      <milliseconds>639</milliseconds>
+    </settings>
+    <timestamp>05/21/2011 12:59:03</timestamp>
+    <milliseconds>926</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="Token.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>05/17/2011 20:20:06</timestamp>
+      <milliseconds>639</milliseconds>
+    </settings>
+    <timestamp>05/21/2011 12:59:40</timestamp>
+    <milliseconds>471</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="UriToken.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>05/17/2011 20:20:06</timestamp>
+      <milliseconds>639</milliseconds>
+    </settings>
+    <timestamp>05/21/2011 12:59:58</timestamp>
+    <milliseconds>451</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name=".NETFramework,Version=v4.0.AssemblyAttributes.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>05/17/2011 20:20:06</timestamp>
+      <milliseconds>639</milliseconds>
+    </settings>
+    <timestamp>05/01/2011 12:00:36</timestamp>
+    <milliseconds>877</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TokenTypeEnum.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>05/17/2011 20:20:06</timestamp>
+      <milliseconds>639</milliseconds>
+    </settings>
+    <timestamp>05/21/2011 13:05:15</timestamp>
+    <milliseconds>864</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>05/17/2011 20:20:06</timestamp>
+      <milliseconds>639</milliseconds>
+    </settings>
+    <timestamp>05/21/2011 13:08:54</timestamp>
+    <milliseconds>338</milliseconds>
+    <violations />
+  </sourcecode>
+  <project key="-1296484515">
+    <configuration>TRACE</configuration>
+  </project>
+</stylecopresultscache>

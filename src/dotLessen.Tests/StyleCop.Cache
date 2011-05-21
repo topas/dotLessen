@@ -1,0 +1,33 @@
+<stylecopresultscache>
+  <version>10</version>
+  <sourcecode name=".NETFramework,Version=v4.0.AssemblyAttributes.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>05/21/2011 13:07:26</timestamp>
+      <milliseconds>154</milliseconds>
+    </settings>
+    <timestamp>05/01/2011 12:00:36</timestamp>
+    <milliseconds>877</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="TokenizerTest.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>05/21/2011 13:07:26</timestamp>
+      <milliseconds>154</milliseconds>
+    </settings>
+    <timestamp>05/21/2011 13:04:17</timestamp>
+    <milliseconds>351</milliseconds>
+    <violations />
+  </sourcecode>
+  <sourcecode name="AssemblyInfo.cs" parser="Microsoft.StyleCop.CSharp.CsParser">
+    <settings>
+      <timestamp>05/21/2011 13:07:26</timestamp>
+      <milliseconds>154</milliseconds>
+    </settings>
+    <timestamp>05/21/2011 13:08:51</timestamp>
+    <milliseconds>117</milliseconds>
+    <violations />
+  </sourcecode>
+  <project key="1196368213">
+    <configuration>TRACE</configuration>
+  </project>
+</stylecopresultscache>
