@@ -19,7 +19,9 @@ namespace DotLessen.Tokenizers
         /// <param name="text">The text for tokenizing.</param>
         /// <param name="start">The start index.</param>
         /// <param name="end">The end index.</param>
-        public StringTokenizer(string text, int start, int end)
+        /// <param name="localTextOffset">The local text offset.</param>
+        public StringTokenizer(string text, int start, int end, int localTextOffset) 
+            : base(localTextOffset)
         {
             this.Text = text;
             this.Start = start;
@@ -32,8 +34,18 @@ namespace DotLessen.Tokenizers
         /// Initializes a new instance of the <see cref="StringTokenizer"/> class.
         /// </summary>
         /// <param name="text">The text for tokenizing.</param>
-        public StringTokenizer(string text) : this(text, 0, text.Length)
+        public StringTokenizer(string text) : this(text, 0, text.Length, 0)
         {     
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StringTokenizer"/> class.
+        /// </summary>
+        /// <param name="text">The text for tokenizing.</param>
+        /// <param name="localTextOffset">The local text offset.</param>
+        public StringTokenizer(string text, int localTextOffset)
+            : this(text, 0, text.Length, localTextOffset)
+        {
         }
 
         /// <summary>

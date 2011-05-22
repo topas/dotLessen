@@ -24,6 +24,15 @@ namespace DotLessen.Tokenizers
         private bool _disposed;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ITokenizerBase"/> class.
+        /// </summary>
+        /// <param name="localTokenOffset">The local token offset.</param>
+        protected ITokenizerBase(int localTokenOffset)
+        {
+            this.LocalTokenOffset = localTokenOffset;
+        }
+
+        /// <summary>
         /// Gets the element in the collection at the current position of the enumerator.
         /// </summary>
         /// <returns>
@@ -65,6 +74,15 @@ namespace DotLessen.Tokenizers
         }
 
         /// <summary>
+        /// Gets the local token offset.
+        /// </summary>
+        protected int LocalTokenOffset
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         /// <filterpriority>2</filterpriority>
@@ -99,7 +117,11 @@ namespace DotLessen.Tokenizers
                     int distance = this.LookOverWhitespace(tokenStart);
                     tokenEnd = tokenStart + distance;
 
-                    this.Token = new Token(TokenTypeEnum.Whitespace, tokenStart, tokenEnd, this.GetText(tokenStart, tokenEnd));
+                    this.Token = new Token(
+                        TokenTypeEnum.Whitespace, 
+                        tokenStart + this.LocalTokenOffset, 
+                        tokenEnd + this.LocalTokenOffset, 
+                        this.GetText(tokenStart, tokenEnd));
 
                     this.Advance(distance);
                     return true;
@@ -117,8 +139,8 @@ namespace DotLessen.Tokenizers
 
                     this.Token = new Token(
                         TokenTypeEnum.Delimiter,
-                        tokenStart,
-                        tokenEnd,
+                        tokenStart + this.LocalTokenOffset,
+                        tokenEnd + this.LocalTokenOffset,
                         this.GetText(tokenStart, tokenEnd));
 
                     this.Advance();
@@ -209,8 +231,8 @@ namespace DotLessen.Tokenizers
 
                         this.Token = new Token(
                             TokenTypeEnum.AtIdentifier,
-                            tokenStart,
-                            tokenEnd,
+                            tokenStart + this.LocalTokenOffset,
+                            tokenEnd + this.LocalTokenOffset,
                             this.GetText(tokenStart, tokenEnd));
 
                         this.Advance(1 + distance);
@@ -226,8 +248,8 @@ namespace DotLessen.Tokenizers
 
                         this.Token = new Token(
                             TokenTypeEnum.HashName,
-                            tokenStart,
-                            tokenEnd,
+                            tokenStart + this.LocalTokenOffset,
+                            tokenEnd + this.LocalTokenOffset,
                             this.GetText(tokenStart, tokenEnd));
 
                         this.Advance(1 + distance);
@@ -244,8 +266,8 @@ namespace DotLessen.Tokenizers
 
                     this.Token = new Token(
                         TokenTypeEnum.CDataOpen,
-                        tokenStart,
-                        tokenEnd,
+                        tokenStart + this.LocalTokenOffset,
+                        tokenEnd + this.LocalTokenOffset,
                         this.GetText(tokenStart, tokenEnd));
 
                     this.Advance(4);
@@ -261,8 +283,8 @@ namespace DotLessen.Tokenizers
 
                         this.Token = new Token(
                             TokenTypeEnum.CDataClose,
-                            tokenStart,
-                            tokenEnd,
+                            tokenStart + this.LocalTokenOffset,
+                            tokenEnd + this.LocalTokenOffset,
                             this.GetText(tokenStart, tokenEnd));
 
                         this.Advance(3);
@@ -286,8 +308,8 @@ namespace DotLessen.Tokenizers
 
                             this.Token = new Token(
                                 TokenTypeEnum.Identifier,
-                                tokenStart,
-                                tokenEnd, 
+                                tokenStart + this.LocalTokenOffset,
+                                tokenEnd + this.LocalTokenOffset, 
                                 this.GetText(tokenStart, tokenEnd));
 
                             this.Advance(1 + distance);
@@ -317,7 +339,11 @@ namespace DotLessen.Tokenizers
                                 }
                             }
 
-                            this.Token = new Token(TokenTypeEnum.UnicodeRange, tokenStart, tokenEnd, this.GetText(tokenStart, tokenEnd));
+                            this.Token = new Token(
+                                TokenTypeEnum.UnicodeRange, 
+                                tokenStart + this.LocalTokenOffset,
+                                tokenEnd + this.LocalTokenOffset, 
+                                this.GetText(tokenStart, tokenEnd));
 
                             this.Flush(tokenEnd);
                             return true;
@@ -344,16 +370,16 @@ namespace DotLessen.Tokenizers
 
                         this.Token = new Token(
                             TokenTypeEnum.Function,
-                            tokenStart,
-                            tokenEnd,
+                            tokenStart + this.LocalTokenOffset,
+                            tokenEnd + this.LocalTokenOffset,
                             this.GetText(tokenStart, tokenEnd));
                         return true;
                     }
 
                     this.Token = new Token(
                         TokenTypeEnum.Identifier,
-                        tokenStart,
-                        tokenEnd,
+                        tokenStart + this.LocalTokenOffset,
+                        tokenEnd + this.LocalTokenOffset,
                         this.GetText(tokenStart, tokenEnd));
 
                     this.Advance(distance);
@@ -446,8 +472,8 @@ namespace DotLessen.Tokenizers
 
                 this.Token = new Token(
                     TokenTypeEnum.Operator,
-                    tokenStart,
-                    tokenEnd, 
+                    tokenStart + this.LocalTokenOffset,
+                    tokenEnd + this.LocalTokenOffset, 
                     this.GetText(tokenStart, tokenEnd));
             }
             else
