@@ -179,8 +179,8 @@ namespace DotLessen.Tokenizers
 
                             this.Token = new StringValueToken(
                                 TokenTypeEnum.Comment,
-                                tokenStart,
-                                tokenEnd,
+                                tokenStart + this.LocalTokenOffset,
+                                tokenEnd + this.LocalTokenOffset,
                                 this.GetText(tokenStart, tokenEnd),
                                 this.GetText(commentStart, tokenEnd));
 
@@ -211,8 +211,8 @@ namespace DotLessen.Tokenizers
 
                             this.Token = new StringValueToken(
                                 TokenTypeEnum.Comment,
-                                tokenStart,
-                                tokenEnd,
+                                tokenStart + this.LocalTokenOffset,
+                                tokenEnd + this.LocalTokenOffset,
                                 this.GetText(tokenStart, tokenEnd),
                                 this.GetText(commentStart, commentEnd));
 
@@ -393,7 +393,12 @@ namespace DotLessen.Tokenizers
 
                     tokenEnd = this.GetCurrentOffset();
 
-                    this.Token = new StringValueToken(TokenTypeEnum.String, tokenStart, tokenEnd, this.GetText(tokenStart, tokenEnd), value);
+                    this.Token = new StringValueToken(
+                        TokenTypeEnum.String,
+                        tokenStart + this.LocalTokenOffset,
+                        tokenEnd + this.LocalTokenOffset, 
+                        this.GetText(tokenStart, tokenEnd), 
+                        value);
 
                     return true;
                 }
@@ -423,8 +428,8 @@ namespace DotLessen.Tokenizers
 
                         this.Token = new StringValueToken(
                             TokenTypeEnum.Variable,
-                            tokenStart,
-                            tokenEnd,
+                            tokenStart + this.LocalTokenOffset,
+                            tokenEnd + this.LocalTokenOffset,
                             this.GetText(tokenStart, tokenEnd),
                             this.GetText(nameStart, nameEnd));
 
@@ -455,8 +460,8 @@ namespace DotLessen.Tokenizers
 
                         this.Token = new StringValueToken(
                             TokenTypeEnum.Variable,
-                            tokenStart,
-                            tokenEnd,
+                            tokenStart + this.LocalTokenOffset,
+                            tokenEnd + this.LocalTokenOffset,
                             this.GetText(tokenStart, tokenEnd),
                             this.GetText(nameStart, tokenEnd));
 
@@ -672,8 +677,8 @@ namespace DotLessen.Tokenizers
 
                     this.Token = new NumericToken(
                         TokenTypeEnum.Percentage,
-                        tokenStart,
-                        tokenEnd,
+                        tokenStart + this.LocalTokenOffset,
+                        tokenEnd + this.LocalTokenOffset,
                         this.GetText(tokenStart, tokenEnd),
                         num);
 
@@ -694,9 +699,9 @@ namespace DotLessen.Tokenizers
                     tokenEnd = this.GetCurrentOffset();
 
                     this.Token = new NumericWithUnitToken(
-                        TokenTypeEnum.Dimension, 
-                        tokenStart, 
-                        tokenEnd,
+                        TokenTypeEnum.Dimension,
+                        tokenStart + this.LocalTokenOffset,
+                        tokenEnd + this.LocalTokenOffset,
                         this.GetText(tokenStart, tokenEnd), 
                         num, 
                         this.GetText(unitStart, tokenEnd));
@@ -708,7 +713,12 @@ namespace DotLessen.Tokenizers
 
             tokenEnd = this.GetCurrentOffset();
 
-            this.Token = new NumericToken(TokenTypeEnum.Number, tokenStart, tokenEnd, this.GetText(tokenStart, tokenEnd), num);
+            this.Token = new NumericToken(
+                TokenTypeEnum.Number, 
+                tokenStart + this.LocalTokenOffset,
+                tokenEnd + this.LocalTokenOffset,
+                this.GetText(tokenStart, tokenEnd), 
+                num);
 
             this.Flush(tokenEnd);
         }
@@ -764,7 +774,12 @@ namespace DotLessen.Tokenizers
             }
 
             int tokenEnd = this.GetCurrentOffset();
-            this.Token = new UriToken(tokenStart, tokenEnd, this.GetText(tokenStart, tokenEnd), prefix, value);
+            this.Token = new UriToken(
+                tokenStart + this.LocalTokenOffset,
+                tokenEnd + this.LocalTokenOffset, 
+                this.GetText(tokenStart, tokenEnd), 
+                prefix, 
+                value);
         }
 
         /// <summary>
