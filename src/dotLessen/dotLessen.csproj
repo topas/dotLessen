@@ -44,6 +44,7 @@
     <Compile Include="Tokenizers\ITokenizer.cs" />
     <Compile Include="Tokenizers\ITokenizerBase.cs" />
     <Compile Include="Tokenizers\StringTokenizer.cs" />
+    <Compile Include="Tokenizers\TokenizerOptions.cs" />
     <Compile Include="Tokens\NumericToken.cs" />
     <Compile Include="Tokens\NumericWithUnitToken.cs" />
     <Compile Include="Tokens\StringValueToken.cs" />

@@ -477,5 +477,75 @@ namespace DotLessen.Tests
 
             Assert.True(tokenized);
         }
+
+        /// <summary>
+        /// Tests multiline comment start tokens
+        /// </summary>
+        [Fact]
+        public void MultilineCommentStartTokensTokenize()
+        {
+            const string value = "/*";
+
+            StringTokenizer t = new StringTokenizer(value, 0, TokenizerOptions.MultilineCommentBeginEndTokens);
+            bool tokenized = false;
+            while (t.MoveNext())
+            {
+                Assert.Equal(TokenTypeEnum.MultiLineCommentStart, t.Current.Type);
+                Assert.Equal(value, t.Current.Text);
+                tokenized = true;
+            }
+
+            Assert.True(tokenized);
+        }
+
+        /// <summary>
+        /// Tests multiline comment end tokens
+        /// </summary>
+        [Fact]
+        public void MultilineCommentEndTokensTokenize()
+        {
+            const string value = "*/";
+
+            StringTokenizer t = new StringTokenizer(value, 0, TokenizerOptions.MultilineCommentBeginEndTokens);
+            bool tokenized = false;
+            while (t.MoveNext())
+            {
+                Assert.Equal(TokenTypeEnum.MultiLineCommentEnd, t.Current.Type);
+                Assert.Equal(value, t.Current.Text);
+                tokenized = true;
+            }
+
+            Assert.True(tokenized);
+        }
+
+        /// <summary>
+        /// Tests tokens in separate multiline comment parsing.
+        /// </summary>
+        [Fact]
+        public void MutlilineCommentsTokensTokenize()
+        {
+            const string value = @"/*** ahoj **/";
+
+            StringTokenizer t = new StringTokenizer(value, 0, TokenizerOptions.MultilineCommentBeginEndTokens);
+
+            List<TokenTypeEnum> expectedTokens = new List<TokenTypeEnum>
+                {
+                    TokenTypeEnum.MultiLineCommentStart,
+                    TokenTypeEnum.Operator,
+                    TokenTypeEnum.Operator,
+                    TokenTypeEnum.Whitespace,
+                    TokenTypeEnum.Identifier,
+                    TokenTypeEnum.Whitespace,
+                    TokenTypeEnum.Operator,
+                    TokenTypeEnum.MultiLineCommentEnd
+                };
+
+            int i = 0;
+            while (t.MoveNext())
+            {
+                var token = t.Current;
+                Assert.Equal(expectedTokens[i++], token.Type);
+            }
+        }
     }
 }

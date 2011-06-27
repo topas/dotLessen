@@ -107,6 +107,16 @@ namespace DotLessen.Tokens
         /// <summary>
         /// Color token
         /// </summary>
-        Color
+        Color, 
+
+        /// <summary>
+        /// Multiline comment start token
+        /// </summary>
+        MultiLineCommentStart,
+
+        /// <summary>
+        /// Multiline comment end token
+        /// </summary>
+        MultiLineCommentEnd,
     } 
 }

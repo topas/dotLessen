@@ -27,9 +27,11 @@ namespace DotLessen.Tokenizers
         /// Initializes a new instance of the <see cref="ITokenizerBase"/> class.
         /// </summary>
         /// <param name="localTokenOffset">The local token offset.</param>
-        protected ITokenizerBase(int localTokenOffset)
+        /// <param name="options">The options.</param>
+        protected ITokenizerBase(int localTokenOffset, TokenizerOptions options)
         {
             this.LocalTokenOffset = localTokenOffset;
+            this.Options = options;
         }
 
         /// <summary>
@@ -80,6 +82,18 @@ namespace DotLessen.Tokenizers
         {
             get;
             private set;
+        }
+
+        /// <summary>
+        /// Gets or sets the options.
+        /// </summary>
+        /// <value>
+        /// The options.
+        /// </value>
+        protected TokenizerOptions Options
+        {
+            get;
+            set;
         }
 
         /// <summary>
@@ -190,6 +204,18 @@ namespace DotLessen.Tokenizers
                         if (c2 == '*')
                         {
                             this.Advance(2, false);
+                         
+                            if ((this.Options & TokenizerOptions.MultilineCommentBeginEndTokens) == TokenizerOptions.MultilineCommentBeginEndTokens)
+                            {
+                                tokenEnd = this.GetCurrentOffset();
+                                this.Token = new Token(
+                                    TokenTypeEnum.MultiLineCommentStart,
+                                    tokenStart + this.LocalTokenOffset, 
+                                    tokenEnd + this.LocalTokenOffset,
+                                    this.GetText(tokenStart, tokenEnd));
+
+                                return true;
+                            }
 
                             int commentStart = this.GetCurrentOffset();
                             int commentEnd = commentStart;
@@ -471,6 +497,30 @@ namespace DotLessen.Tokenizers
                     }
                 }
 
+                if ((this.Options & TokenizerOptions.MultilineCommentBeginEndTokens) == TokenizerOptions.MultilineCommentBeginEndTokens)
+                {
+                    if (c == '*')
+                    {
+                        if (this.HasMoreChar(1))
+                        {
+                            char c2 = this.GetCharRelative(1);
+                            if (c2 == '/')
+                            {
+                                this.Advance(2, false);
+
+                                tokenEnd = this.GetCurrentOffset();
+                                this.Token = new Token(
+                                    TokenTypeEnum.MultiLineCommentEnd,
+                                    tokenStart + this.LocalTokenOffset,
+                                    tokenEnd + this.LocalTokenOffset,
+                                    this.GetText(tokenStart, tokenEnd));
+
+                                return true;
+                            }
+                        }
+                    }
+                }
+                                     
                 this.Advance();
 
                 tokenEnd = this.GetCurrentOffset();
